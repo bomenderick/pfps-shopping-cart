@@ -7,8 +7,8 @@ services:
       - "5432:5432"
     environment:
       - DEBUG=false
-      - POSTGRES_DB=store
-      - POSTGRES_PASSWORD=my-password
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=postgres
     volumes:
       - ./modules/core/src/main/resources/tables.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:

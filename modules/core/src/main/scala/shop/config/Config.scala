@@ -1,10 +1,8 @@
 package shop.config
 
 import scala.concurrent.duration._
-
 import shop.config.AppEnvironment._
 import shop.config.types._
-
 import cats.effect.Async
 import cats.syntax.all._
 import ciris._
@@ -15,10 +13,35 @@ import eu.timepit.refined.cats._
 import eu.timepit.refined.types.string.NonEmptyString
 
 object Config {
+//  val conf = withValue
+
+//  val config =
+//    withValue(env[Option[AppEnvironment]]("APP_ENV")) {
+//      case Some(AppEnvironment.Local) | None =>
+//        loadConfig {
+//          Config(
+//            apiKey = "RacrqvWjuu4KVmnTG9b6xyZMTP7jnX",
+//            timeoutSeconds = 10,
+//            port = 4000
+//          )
+//        }
+//
+//      case _ =>
+//        loadConfig(
+//          env[ApiKey]("API_KEY"),
+//          prop[NonSystemPort]("http.port")
+//        ) { (apiKey, port) =>
+//          Config(
+//            apiKey = apiKey,
+//            timeoutSeconds = 10,
+//            port = port
+//          )
+//        }
+//    }
 
   // Ciris promotes configuration as code
   def load[F[_]: Async]: F[AppConfig] =
-    env("SC_APP_ENV")
+    env("app.SC_APP_ENV")
       .as[AppEnvironment]
       .flatMap {
         case Test =>
@@ -66,7 +89,7 @@ object Config {
           port = 5432,
           user = "postgres",
           password = postgresPassword,
-          database = "store",
+          database = "postgres",
           max = 10
         ),
         RedisConfig(redisUri),
