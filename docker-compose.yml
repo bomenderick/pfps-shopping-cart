@@ -4,7 +4,7 @@ services:
     restart: always
     image: postgres:13.0-alpine
     ports:
-      - "5430:5430"
+      - "5432:5432"
     environment:
       - DEBUG=false
       - POSTGRES_DB=postgres

@@ -21,7 +21,7 @@ object Config {
       .flatMap {
         case Test =>
           default[F](
-            RedisURI("redis://localhost"),
+            RedisURI("redis://localhost:6379"),
             PaymentURI("https://payments.free.beeceptor.com")
           )
         case Prod =>
@@ -61,7 +61,7 @@ object Config {
         ),
         PostgreSQLConfig(
           host = "localhost",
-          port = 5430,
+          port = 5432,
           user = "postgres",
           password = postgresPassword,
           database = "postgres",
@@ -69,7 +69,7 @@ object Config {
         ),
         RedisConfig(redisUri),
         HttpServerConfig(
-          host = host"0.0.0.0",
+          host = host"localhost",
           port = port"8080"
         )
       )
