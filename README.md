@@ -11,6 +11,8 @@ shopping-cart
 
 Here's an overview of the different components that make this application.
 
+-   `network_mode: host` doesn't work with Docker for Mac/Windows
+
 ![components](./app.png)
 
 - Both **Services** and **Authentication** are *algebras*. The latter are mainly dependencies for some of the services.
