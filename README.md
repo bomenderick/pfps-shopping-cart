@@ -11,7 +11,8 @@ shopping-cart
 
 Here's an overview of the different components that make this application.
 
--   `network_mode: host` doesn't work with Docker for Mac/Windows
+-   `network_mode: host` doesn't work with Docker for Mac/Windows. The os won't warn you of that and will create 
+-   the container silently but won't bind to any local port.
 
 ![components](./app.png)
 
