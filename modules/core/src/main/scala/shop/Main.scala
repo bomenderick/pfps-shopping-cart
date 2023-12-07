@@ -27,7 +27,7 @@ object Main extends IOApp.Simple {
                 val services = Services.make[IO](res.redis, res.postgres, cfg.cartExpiration)
                 val programs = Programs.make[IO](cfg.checkoutConfig, services, clients)
                 val api      = HttpApi.make[IO](services, programs, security)
-                cfg.httpServerConfig -> api.httpApp
+                (cfg.httpServerConfig, api.httpApp)
               }
             }
             .flatMap {

@@ -21,7 +21,7 @@ object Config {
       .flatMap {
         case Test =>
           default[F](
-            RedisURI("redis://localhost:6379"),
+            RedisURI("redis://localhost"),
             PaymentURI("https://payments.free.beeceptor.com")
           )
         case Prod =>
@@ -69,7 +69,7 @@ object Config {
         ),
         RedisConfig(redisUri),
         HttpServerConfig(
-          host = host"localhost",
+          host = host"0.0.0.0",
           port = port"8080"
         )
       )
